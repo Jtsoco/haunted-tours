@@ -26,5 +26,6 @@ tour = Tour.new
 tour.name = "spooky house!!"
 tour.price = 500
 tour.description = "It's really scary I promise!"
+tour.location = "Meguro"
 tour.user = User.first
 tour.save
