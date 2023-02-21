@@ -9,18 +9,15 @@ class ToursController < ApplicationController
 
   def show
     @tour = Tour.find(params[:id])
+    authorize @tour
   end
 
   def create
   end
 
-  def show
-    authorize @tour
-  end
-
   private
 
   def tour_params
-    params.require(:tour).permit(:name, :price, :description, :location)
+    params.require(:tour).permit(:name, :price, :description, :location, :photos)
   end
 end
