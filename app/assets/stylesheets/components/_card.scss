@@ -5,22 +5,44 @@
   font-family: 'Special Elite', cursive;
 
 }
-.card{
+
+.card {
+  position: relative;
   width: 232px;
   height: 323px;
 
 }
-.card img{
-background-size: cover;
 
+.favorite-logo {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.logo-size {
+  width: 30px;
+  height: 30px;
+}
+
+.card img {
+  background-size: cover;
 
 }
 
-.card h2{
+.card h2 {
   font-size: 40px;
 }
 
-.card-background-img {
-  background-size:100%;
-  width: 320px
+.card-info-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
 }
+
+.card-info-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin: 8px;
+  }
+
