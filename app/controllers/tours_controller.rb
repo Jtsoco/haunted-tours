@@ -9,13 +9,10 @@ class ToursController < ApplicationController
 
   def show
     @tour = Tour.find(params[:id])
+    authorize @tour
   end
 
   def create
-  end
-
-  def show
-    authorize @tour
   end
 
   private
