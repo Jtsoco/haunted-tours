@@ -1,6 +1,15 @@
 // Import page-specific CSS files here.
 @import "home";
+
 .container {
-  background-color: rgb(0, 0, 0);
   text-align: center;
+}
+
+.container h2 {
+  color: azure;
+}
+
+body {
+  background-image: url("https://images.pexels.com/photos/1270184/pexels-photo-1270184.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: cover;
 }
