@@ -1,6 +1,7 @@
 class ToursController < ApplicationController
   def index
-    authorize @tour
+    @tours = Tour.all
+    @tours = policy_scope(Tour)
   end
 
   def new
