@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   end
   get '/hosted_tours', to: 'tours#hosted_tours', as: :hosted_tours
   get '/bookings', to: 'bookings#index', as: :booked_tours
-  get '/bookings/new', to: 'bookings#new', as: :bookings_new
 
 
   # Defines the root path route ("/")
