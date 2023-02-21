@@ -1,0 +1,21 @@
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  font-family: 'Special Elite', cursive;
+
+}
+.card{
+  width: 232px;
+  height: 323px;
+
+}
+.card img{
+background-size: cover;
+
+
+}
+
+.card h2{
+  font-size: 40px;
+}
