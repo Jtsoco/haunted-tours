@@ -3,6 +3,7 @@
   <% @bookings.each do |booking| %>
     <div>
       <li>
+          <%= cl_image_tag (booking.tour.photos.first.key) %>
           <%= booking.tour.name %>
           <%= booking.start_date %>
           <%= booking.end_date %>
