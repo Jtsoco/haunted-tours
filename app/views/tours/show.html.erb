@@ -6,23 +6,15 @@
 
   <div class='container w-100 pt-3 d-flex'>
     <div class='main-image w-50 border-black pe-3'>
-      <%= image_tag 'https://news.ucdenver.edu/wp-content/uploads/2019/10/DSC_0136-copy-1288x726.jpg', class: 'w-100 h-100' %>
-    </div>
-
     <div class='show-images w-50'>
-      <div class=''>
-        <%= image_tag 'https://www.heritagedaily.com/wp-content/uploads/2021/10/high-scaled.jpg', class: 'w-100' %>
-      </div>
-      <div class=''>
-        <%= image_tag 'https://www.heritagedaily.com/wp-content/uploads/2021/10/high-scaled.jpg', class: 'w-100' %>
-      </div>
+      <% @tour.photos.each do |photo| %>
 
       <div class=''>
-        <%= image_tag 'https://www.heritagedaily.com/wp-content/uploads/2021/10/high-scaled.jpg', class: 'w-100' %>
+        <%= cl_image_tag photo.key, class: 'w-100 h-100' %>
       </div>
-      <div class=''>
-        <%= image_tag 'https://www.heritagedaily.com/wp-content/uploads/2021/10/high-scaled.jpg', class: 'w-100' %>
-      </div>
+
+      <% end %>
+    </div>
     </div>
   </div>
 
