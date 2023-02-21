@@ -1,11 +1,11 @@
 <div class='container-fluid'>
-  <div class='p-3'>
+  <div class='p-5'>
    <h1><%= @tour.name %></h1>
     <h5>tour review</h5>
   </div>
 
-  <div class='container w-100 d-flex'>
-    <div class='main-image w-50 border border-black pe-3'>
+  <div class='container w-100 pt-3 d-flex'>
+    <div class='main-image w-50 border-black pe-3'>
       <%= image_tag 'https://news.ucdenver.edu/wp-content/uploads/2019/10/DSC_0136-copy-1288x726.jpg', class: 'w-100 h-100' %>
     </div>
 
@@ -29,7 +29,8 @@
   <div class='container d-flex justify-content-between w-100 p-4'>
     <div class='mb-3 w-75'>
       <div class='bg-secondary p-3'>
-        <h3>Tour hosted by:</h3>
+        <h3>Tour hosted by:<%=  %>
+        </h3>
         <span><%= @tour.location %></span>
       </div>
     <div class='bg-secondary p-3 mt-4 p-3'>
@@ -38,10 +39,10 @@
     </div>
     </div>
 
-    <div class='bg-secondary p-3'>
+    <div class='bg-light p-3'>
       <h3>$<%= @tour.price %></h3>
       <div class="dropdown">
-        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           Victims number:
         </button>
         <ul class="dropdown-menu">

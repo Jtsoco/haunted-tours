@@ -6,10 +6,6 @@ class TourPolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    @tours = policy_scope(tour)
-  end
-
   def show?
     true
   end
