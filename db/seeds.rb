@@ -19,6 +19,7 @@ Booking.destroy_all
 Tour.destroy_all
 User.destroy_all
 puts 'creating dummies'
+user_url = 'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676952908/development/haunted-tours/dwayne_ub4jwa.jpg'
 10.times do
   user = User.new
   name = Faker::Name.unique.name
@@ -27,21 +28,27 @@ puts 'creating dummies'
   user.first_name = name
   user.last_name = name
   user.password = 'password'
+  file = URI.open(user_url)
+  user.photo.attach(io: file, filename:"Dwayne.jpg", content_type: "image/jpg" )
   puts user
   user.save
 end
 puts 'making tours'
-tour = Tour.new
-tour.name = "spooky house!!"
-tour.price = 500
-tour.description = "It's really scary I promise!"
-tour.location = "Meguro"
-tour.user = User.first
-3.times do
-  url = photo_array.sample
-  type = url.split('.').last
-  file = URI.open(url)
-  tour.photos.attach(io: file, filename:"#{Faker::Books::Lovecraft.deity}.#{type}", content_type: "image/#{type}" )
+
+4.times do
+  tour = Tour.new
+  location = Faker::Books::Lovecraft.unique.location
+  tour.name = "The #{location} place"
+  tour.price = 666
+  tour.description = Faker::Books::Lovecraft.sentence
+  tour.location = location
+  tour.user = User.first
+  3.times do
+    url = photo_array.sample
+    type = url.split('.').last
+    file = URI.open(url)
+    tour.photos.attach(io: file, filename:"#{Faker::Books::Lovecraft.deity}.#{type}", content_type: "image/#{type}" )
+  end
+  tour.save
 end
-tour.save
 puts "finished"
