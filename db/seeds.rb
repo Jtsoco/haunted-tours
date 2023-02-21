@@ -13,13 +13,24 @@ photo_array = ["https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948043/de
   'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948033/development/haunted-tours/scary_bedroom_ufjadj.jpg',
   'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948031/development/haunted-tours/haunted_room_1_c9dtcf.jpg',
   'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948027/development/haunted-tours/haunted_room_2_kpp9d8.webp',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948022/development/haunted-tours/haunted_house_mnq1nv.jpg'
+  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948022/development/haunted-tours/haunted_house_mnq1nv.jpg',
+
 ]
 Booking.destroy_all
 Tour.destroy_all
 User.destroy_all
 puts 'creating dummies'
 user_url = 'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676952908/development/haunted-tours/dwayne_ub4jwa.jpg'
+user = User.new
+  name = "Luca"
+  user.email = "#{name}@faker.net"
+  user.first_name = name
+  user.last_name = name
+  user.password = 'password'
+  file = URI.open(user_url)
+  user.photo.attach(io: file, filename:"Dwayne.jpg", content_type: "image/jpg" )
+  puts user
+  user.save
 10.times do
   user = User.new
   name = Faker::Name.unique.name
@@ -35,7 +46,7 @@ user_url = 'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676952908/develo
 end
 puts 'making tours'
 
-4.times do
+12.times do
   tour = Tour.new
   location = Faker::Books::Lovecraft.unique.location
   tour.name = "The #{location} place"
