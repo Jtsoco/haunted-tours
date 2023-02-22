@@ -1,54 +1,46 @@
 <div class='container-fluid'>
   <div class='p-5'>
-   <h1><%= @tour.name %></h1>
+    <h1><%= @tour.name %></h1>
     <h5>tour review</h5>
   </div>
-
-  <div class='container w-100 pt-3 d-flex'>
-    <div class='main-image w-50 border-black pe-3'>
-    <div class='show-images w-50'>
-      <% @tour.photos.each do |photo| %>
-
-      <div class=''>
-        <%= cl_image_tag photo.key, class: 'w-100 h-100' %>
+  <div data-controller="lightbox">
+    <% @tour.photos.each do |photo| %>
+      <a href="<%= cl_image_path photo.key%>">
+        <%= cl_image_tag photo.key%>
+      </a>
+    <% end %>
+  </div>
+  <div class='tour-content'>
+    <div class='container d-flex justify-content-between w-100 p-4'>
+      <div class='mb-3 w-75'>
+        <div class='bg-secondary p-3'>
+          <h3>Tour hosted by:<%=  %>
+          </h3>
+          <span><%= @tour.location %></span>
+        </div>
+        <div class='bg-secondary p-3 mt-4 p-3'>
+          <h2>Tour description</h2>
+          <span><%= @tour.description %></span>
+        </div>
       </div>
-
-      <% end %>
+      <div class='bg-light p-3'>
+        <h3>$<%= @tour.price %></h3>
+        <div class="dropdown">
+          <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Victims number:
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">1</a></li>
+            <li><a class="dropdown-item" href="#">2</a></li>
+            <li><a class="dropdown-item" href="#">3</a></li>
+            <li><a class="dropdown-item" href="#">4</a></li>
+            <li><a class="dropdown-item" href="#">5</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
+    <div>
+      <%= render 'bookings/form', tour: @tour, booking: Booking.new %>
     </div>
   </div>
-
- <div class='tour-content'>
-  <div class='container d-flex justify-content-between w-100 p-4'>
-    <div class='mb-3 w-75'>
-      <div class='bg-secondary p-3'>
-        <h3>Tour hosted by:<%=  %>
-        </h3>
-        <span><%= @tour.location %></span>
-      </div>
-    <div class='bg-secondary p-3 mt-4 p-3'>
-      <h2>Tour description</h2>
-      <span><%= @tour.description %></span>
-    </div>
-    </div>
-
-    <div class='bg-light p-3'>
-      <h3>$<%= @tour.price %></h3>
-      <div class="dropdown">
-        <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Victims number:
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">1</a></li>
-          <li><a class="dropdown-item" href="#">2</a></li>
-          <li><a class="dropdown-item" href="#">3</a></li>
-          <li><a class="dropdown-item" href="#">4</a></li>
-          <li><a class="dropdown-item" href="#">5</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-<div>
-<%= render 'bookings/form', tour: @tour, booking: Booking.new %>
 </div>

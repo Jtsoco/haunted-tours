@@ -2,7 +2,10 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+import { Application } from '@hotwired/stimulus'
+import Lightbox from 'stimulus-lightbox'
+const application = Application.start()
+application.register('lightbox', Lightbox)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
