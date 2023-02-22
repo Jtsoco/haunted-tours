@@ -32,12 +32,12 @@
         <div class="my relative">
           <div class="card-info-top">
             <p><strong><%= booking.tour.name %></strong></p>
-            <p>🕸️ 5</p>
+            <p>🪦 5</p>
           </div>
-          <div class="card-info-botttom">
+          <div class="card-info-bottom">
             <p><%= booking.start_date %></p>
             <p><%= booking.end_date %></p>
-            <p><%= booking.tour.price %></p>
+            <p>$<%= booking.tour.price %></p>
             <%= link_to '', tour_path(booking.tour), class: "my-overlay" %>
           </div>
         </div>
