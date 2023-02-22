@@ -38,7 +38,7 @@
             <p><%= booking.start_date %></p>
             <p><%= booking.end_date %></p>
             <p><%= booking.tour.price %></p>
-            <a class="my-overlay" href="/tours/1"></a>
+            <%= link_to '', tour_path(booking.tour), class: "my-overlay" %>
           </div>
         </div>
       </div>
