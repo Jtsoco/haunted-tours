@@ -6,7 +6,7 @@
   <div data-controller="lightbox">
     <% @tour.photos.each do |photo| %>
       <a href="<%= cl_image_path photo.key%>">
-        <%= cl_image_tag photo.key%>
+        <%= cl_image_tag photo.key, width:400, height:450, crop: :fill %>
       </a>
     <% end %>
   </div>
@@ -14,9 +14,9 @@
     <div class='container d-flex justify-content-between w-100 p-4'>
       <div class='mb-3 w-75'>
         <div class='bg-secondary p-3'>
-          <h3>Tour hosted by:<%=  %>
+          <h3>Tour hosted by: <%=@tour.user.first_name  %>
           </h3>
-          <span><%= @tour.location %></span>
+          <span>Location: <%=  @tour.location %></span>
         </div>
         <div class='bg-secondary p-3 mt-4 p-3'>
           <h2>Tour description</h2>

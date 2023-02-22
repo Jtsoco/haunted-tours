@@ -29,6 +29,7 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
+
         <div class="my-relative">
           <div class="card-info-top">
             <p><strong><%= tour.name %></strong></p>
@@ -36,7 +37,7 @@
           </div>
           <div class="card-info-bottom">
             <p><%= tour.location %></p>
-            <p>¥<%= tour.price %></p>
+            <p>$<%= tour.price %></p>
             <%= link_to '', tour_path(tour), class: "my-overlay" %>
           </div>
         </div>
