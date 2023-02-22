@@ -11,11 +11,11 @@
           </div>
           <div class="carousel-inner  h-100">
             <% tour.photos.each_with_index do |photo, index| %>
+              <div class="favorite-logo" >
+                <img src="https://cdn-icons-png.flaticon.com/512/7562/7562403.png" alt="" class="logo-size">
+              </div>
               <div class="carousel-item  h-100 my-relative <%= "active" if index == 0 %>">
                 <%= cl_image_tag photo.key, class:"d-block w-100 h-100", alt:"..." %>
-                <div class="favorite-logo">
-                  <img src="https://cdn-icons-png.flaticon.com/512/7562/7562403.png" alt="" class="logo-size">
-                </div>
                 <%= link_to '', tour_path(tour), class: "my-overlay" %>
               </div>
             <% end %>
@@ -29,7 +29,6 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-
         <div class="my-relative">
           <div class="card-info-top">
             <p><strong><%= tour.name %></strong></p>

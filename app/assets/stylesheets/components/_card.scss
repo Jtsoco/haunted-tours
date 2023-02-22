@@ -1,15 +1,16 @@
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 64px;
   font-family: 'Special Elite', cursive;
+  font-size: larger;
 
 }
 
 .card {
   position: relative;
-  width: 232px;
-  height: 323px;
+  width: 280px;
+  height: 3p50x;
 
 }
 
@@ -17,6 +18,7 @@
   position: absolute;
   top: 15px;
   right: 15px;
+  z-index: 1;
 }
 
 .logo-size {
@@ -44,5 +46,4 @@
   flex-direction: column;
   align-items: baseline;
   margin: 8px;
-  }
-
+}
