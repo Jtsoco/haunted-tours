@@ -5,6 +5,36 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+# dwayne is just the dwayne johnson profile pic
+def dwayne
+  user_url = 'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676952908/development/haunted-tours/dwayne_ub4jwa.jpg'
+  URI.open(user_url)
+end
+
+def fake_user_admin(name)
+  user = User.new
+  user.email = "#{name}@faker.net"
+  user.first_name = name
+  user.last_name = name
+  user.password = 'password'
+  user.photo.attach(io: dwayne, filename:"Dwayne.jpg", content_type: "image/jpg" )
+  puts user
+  user.save
+end
+
+def fake_user
+  user = User.new
+  name = Faker::Name.unique.name
+  name = name.split()[0]
+  user.email = "#{name}@faker.net"
+  user.first_name = name
+  user.last_name = name
+  user.password = 'password'
+  user.photo.attach(io: dwayne, filename:"Dwayne.jpg", content_type: "image/jpg" )
+  puts user
+  user.save
+end
 require 'faker'
 photo_array = ["https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948043/development/haunted-tours/sewer_bo51xi.avif",
   'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948040/development/haunted-tours/haunted-tokyo-tours_ayjryz.jpg',
@@ -13,32 +43,27 @@ photo_array = ["https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948043/de
   'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948033/development/haunted-tours/scary_bedroom_ufjadj.jpg',
   'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948031/development/haunted-tours/haunted_room_1_c9dtcf.jpg',
   'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948027/development/haunted-tours/haunted_room_2_kpp9d8.webp',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948022/development/haunted-tours/haunted_house_mnq1nv.jpg'
+  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948022/development/haunted-tours/haunted_house_mnq1nv.jpg',
+
 ]
-Booking.destroy_all
-Tour.destroy_all
 User.destroy_all
 puts 'creating dummies'
-user_url = 'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676952908/development/haunted-tours/dwayne_ub4jwa.jpg'
+
+
 10.times do
-  user = User.new
-  name = Faker::Name.unique.name
-  name = name.split()[0]
-  user.email = "#{name}@faker.net"
-  user.first_name = name
-  user.last_name = name
-  user.password = 'password'
-  file = URI.open(user_url)
-  user.photo.attach(io: file, filename:"Dwayne.jpg", content_type: "image/jpg" )
-  puts user
-  user.save
+  fake_user
 end
+fake_user_admin('luca')
+fake_user_admin('kenta')
+fake_user_admin('emmanuel')
+fake_user_admin('jackson')
 puts 'making tours'
 
-4.times do
+12.times do
   tour = Tour.new
-  location = Faker::Books::Lovecraft.unique.location
+  location = Faker::Books::Lovecraft.location
   tour.name = "The #{location} place"
+  puts tour.name
   tour.price = 666
   tour.description = Faker::Books::Lovecraft.sentence
   tour.location = location
@@ -51,4 +76,25 @@ puts 'making tours'
   end
   tour.save
 end
+
+puts "making bookings"
+
+def booking(user, tour)
+  book = Booking.new
+  book.start_date = DateTime.new(2023,rand(3..12),rand(1..28),rand(1..22))
+  book.end_date = DateTime.new(2023,book.start_date.month,book.start_date.day, book.start_date.hour + 2)
+  book.user = user
+  book.tour = tour
+  book.save
+end
+
+5.times do |i|
+  x = 1
+  puts "Five bookings for #{User.all[x]}"
+  5.times do
+    booking(User.all[x], Tour.all[i])
+    x += 1
+  end
+end
+
 puts "finished"

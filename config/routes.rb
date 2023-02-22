@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :bookings, only: :create
   end
   get '/hosted_tours', to: 'tours#hosted_tours', as: :hosted_tours
-  get '/booked_tours', to: 'bookings#index', as: :booked_tours
+  get '/bookings', to: 'bookings#index', as: :booked_tours
 
   # Defines the root path route ("/")
   # root "articles#index"
