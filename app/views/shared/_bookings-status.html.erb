@@ -1,4 +1,4 @@
-<% current_user.bookings.each do |booking|%>
+<% bookings.each do |booking|%>
   <div class="card-product">
     <%= cl_image_tag booking.user.photo.key, class:'rounded-circle'%>
     <div class="card-product-infos black-shadow">
