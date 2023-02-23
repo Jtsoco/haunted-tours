@@ -8,4 +8,7 @@ class User < ApplicationRecord
   has_many :bookings_as_host, through: :tours, source: :bookings
   validates :first_name, :last_name, presence: true
   has_one_attached :photo
+  def full_name
+    "#{first_name.capitalize} #{last_name.capitalize}"
+  end
 end
