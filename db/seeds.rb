@@ -12,11 +12,11 @@ def dwayne
   URI.open(user_url)
 end
 
-def fake_user_admin(name)
+def fake_user_admin(first_name, last_name)
   user = User.new
-  user.email = "#{name}@faker.net"
-  user.first_name = name
-  user.last_name = name
+  user.email = "#{first_name}@faker.net"
+  user.first_name = first_name
+  user.last_name = last_name
   user.password = 'password'
   user.photo.attach(io: dwayne, filename:"Dwayne.jpg", content_type: "image/jpg" )
   puts user
@@ -33,12 +33,19 @@ def fake_user
   user.last_name = last_name
   user.password = 'password'
   user.photo.attach(io: dwayne, filename:"Dwayne.jpg", content_type: "image/jpg" )
-  puts user
+  puts user.full_name
   user.save
 end
 require 'faker'
-photo_array = ["https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948043/development/haunted-tours/sewer_bo51xi.avif",
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948040/development/haunted-tours/haunted-tokyo-tours_ayjryz.jpg',
+PHOTO_ARRAY = ["https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948043/development/haunted-tours/sewer_bo51xi.avif",
+  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159836/development/haunted-tours/ajtlzrlsrodmmdssyipf.jpg',
+  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159795/development/haunted-tours/images_nfh29w.jpg',
+  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159787/development/haunted-tours/jbamqett9vtifkkio0rz.jpg',
+  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159777/development/haunted-tours/rmwgehbdmilma5391kjf.jpg',
+  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159777/development/haunted-tours/rmwgehbdmilma5391kjf.jpg',
+  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159752/development/haunted-tours/swjzbjrft7ghbr6qstye.jpg',
+  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159738/development/haunted-tours/images_d7cx8j.jpg',
+  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159726/development/haunted-tours/creep_b9n0gn.jpg',
   'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948036/development/haunted-tours/scary_kitchen_gcyshd.jpg',
   'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948034/development/haunted-tours/haunted_house_2_iiflhg.webp',
   'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948033/development/haunted-tours/scary_bedroom_ufjadj.jpg',
@@ -51,33 +58,41 @@ User.destroy_all
 puts 'creating dummies'
 
 
+fake_user_admin('luca', 'Vigotti')
+fake_user_admin('kenta', 'Asakura')
+fake_user_admin('emmanuel', 'de La Forest')
+fake_user_admin('jackson', 'Socolofsky')
 10.times do
   fake_user
 end
-fake_user_admin('luca')
-fake_user_admin('kenta')
-fake_user_admin('emmanuel')
-fake_user_admin('jackson')
-puts 'making tours'
-
-12.times do
-  tour = Tour.new
-  location = Faker::Books::Lovecraft.location
-  tour.name = "The #{location} place"
-  puts tour.name
-  tour.price = 666
-  tour.description = Faker::Books::Lovecraft.sentence
-  tour.location = location
-  tour.user = User.first
-  3.times do
-    url = photo_array.sample
-    type = url.split('.').last
-    file = URI.open(url)
-    tour.photos.attach(io: file, filename:"#{Faker::Books::Lovecraft.deity}.#{type}", content_type: "image/#{type}" )
+MONSTERS = %w[demon ghost witch monster zombie murderer goblin devil skeleton]
+def make_tours(index)
+  4.times do
+    tour = Tour.new
+    location = Faker::Address.full_address
+    tour_name = Faker::Address.city_prefix
+    tour_prefix = Faker::Address.city_suffix
+    tour.name = "The #{MONSTERS.sample}s of #{tour_prefix} #{tour_name} "
+    puts tour.name
+    tour.price = 666
+    tour.description = Faker::Books::Lovecraft.sentence
+    tour.location = location
+    tour.user = User.all[index]
+    3.times do
+      url = PHOTO_ARRAY.sample
+      type = url.split('.').last
+      file = URI.open(url)
+      tour.photos.attach(io: file, filename:"#{Faker::Books::Lovecraft.deity}.#{type}", content_type: "image/#{type}" )
+    end
+    tour.save
   end
-  tour.save
 end
-
+puts 'making tours'
+make_tours(0)
+make_tours(1)
+make_tours(2)
+make_tours(3)
+make_tours(4)
 puts "making bookings"
 
 def booking(user, tour)
