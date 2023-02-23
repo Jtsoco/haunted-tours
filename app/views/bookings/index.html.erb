@@ -1,8 +1,9 @@
 <div class= "container mt-3">
-  <h2>My bookings</h1>
+  <h2 class="index-header">My bookings</h2>
   <div class="cards">
     <% @bookings.each do |booking| %>
       <div class="card">
+        <p id="tombstone-head"><strong><%= booking.tour.name %></strong></p>
         <div id="carouselExampleIndicators<%= booking.id %>" class="carousel slide h-50">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators<%= booking.id %>" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -31,13 +32,12 @@
         </div>
         <div class="my relative">
           <div class="card-info-top">
-            <p><strong><%= booking.tour.name %></strong></p>
-            <p>🪦 5</p>
+            <p>$<%= booking.tour.price * booking.guests %></p>
+            <p>⚰️ 5</p>
           </div>
-          <div class="card-info-bottom">
+          <div>
             <p><%= booking.start_date %></p>
             <p><%= booking.end_date %></p>
-            <p>$<%= booking.tour.price %></p>
             <%= link_to '', tour_path(booking.tour), class: "my-overlay" %>
           </div>
         </div>
