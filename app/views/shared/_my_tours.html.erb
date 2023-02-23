@@ -1,21 +1,20 @@
-<div class="container">
-  <h2 class="index-header">Our most popular tours</h2>
+<div class='container-fluid'>
+  <h1 class='p-5 d-flex justify-content-center'>Your hosted tours</h1>
   <div class="cards">
     <% @tours.each do |tour| %>
       <div class="card">
-        <p id="tombstone-head"><strong><%= tour.name %></strong></p>
         <div id="carouselExampleIndicators<%= tour.id %>" class="carousel slide h-50">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators<%= tour.id %>" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators<%= tour.id %>" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators<%= tour.id %>" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
-          <div class="carousel-inner  h-100">
+          <div class="carousel-inner h-100">
             <% tour.photos.each_with_index do |photo, index| %>
               <div class="favorite-logo" >
                 <img src="https://cdn-icons-png.flaticon.com/512/7562/7562403.png" alt="" class="logo-size">
               </div>
-              <div class="carousel-item  h-100 my-relative <%= "active" if index == 0 %>">
+              <div class="carousel-item h-100 my-relative <%= "active" if index == 0 %>">
                 <%= cl_image_tag photo.key, class:"d-block w-100 h-100", alt:"..." %>
                 <%= link_to '', tour_path(tour), class: "my-overlay" %>
               </div>
@@ -31,10 +30,13 @@
           </button>
         </div>
         <div class="my-relative">
-          <div class="card-info-bottom">
+          <div class="card-info-top">
+            <p><strong><%= tour.name %></strong></p>
             <p>⚰️ 5</p>
+          </div>
+          <div class="card-info-bottom">
             <p><%= tour.location %></p>
-            <p>$<%= tour.price %> each</p>
+            <p>$<%= tour.price %></p>
             <%= link_to '', tour_path(tour), class: "my-overlay" %>
           </div>
         </div>

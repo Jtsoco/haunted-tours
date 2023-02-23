@@ -7,19 +7,27 @@
 
 }
 
+#tombstone-head {
+  position: relative;
+  display: inline-block;
+  top: 10px;
+}
+
 .card {
   position: relative;
   width: 280px;
-  height: 3p50x;
-  background-color: darkgray;
+  height: 350px;
+  background-color: #8f9394;
   color: black;
-
+  border-top-right-radius: 70px;
+  border-top-left-radius: 70px;
+  border: black;
 }
 
 .favorite-logo {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 10px;
+  right: 19px;
   z-index: 1;
 }
 
@@ -30,7 +38,8 @@
 
 .card img {
   background-size: cover;
-
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 
 .card h2 {
@@ -40,7 +49,9 @@
 .card-info-top {
   display: flex;
   justify-content: space-between;
-  padding: 5px;
+  padding-inline-end: 10px;
+  padding-inline-start: 20px;
+  margin-top: 8px;
 }
 
 .card-info-bottom {
@@ -48,4 +59,6 @@
   flex-direction: column;
   align-items: baseline;
   margin: 8px;
+  margin-top: 8px;
+  margin-left: 10px;
 }
