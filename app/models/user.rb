@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :tours, dependent: :destroy
   has_many :bookings, dependent: :destroy
+  has_many :bookings_as_host, through: :tours, source: :bookings
   validates :first_name, :last_name, presence: true
   has_one_attached :photo
 end
