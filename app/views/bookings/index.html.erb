@@ -36,8 +36,7 @@
             <p>⚰️ 5</p>
           </div>
           <div>
-            <p><%= booking.start_date %></p>
-            <p><%= booking.end_date %></p>
+            <i class="fa-regular fa-clock card-product-logo-margin"></i><%= booking.nice_date %>
             <%= link_to '', tour_path(booking.tour), class: "my-overlay" %>
           </div>
         </div>
