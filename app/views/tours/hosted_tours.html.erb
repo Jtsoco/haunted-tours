@@ -1,6 +1,46 @@
-<%# <div style="width:200px"> %>
-<%# <%= render 'shared/form-tour', tour: @tour %>
-<%# </div> %>
-<%# <div style="width:800px"> %>
-  <%# <%= render 'shared/bookings-status', bookings: @bookings %>
-<%# </div> %>
+<ul class="nav tabs-underlined" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <span class="nav-link tab-underlined active" id="pending-bookings-tab" data-bs-toggle="tab" data-bs-target="#pending-bookings-tab-pane" role="tab" aria-controls="pending-bookings-tab-pane" aria-selected="true">Pending Bookings</span>
+  </li>
+  <li class="nav-item" role="presentation">
+    <span class="nav-link tab-underlined" id="accepted-tab" data-bs-toggle="tab" data-bs-target="#accepted-tab-pane" role="tab" aria-controls="accepted-tab-pane" aria-selected="false">Accepted Bookings</span>
+  </li>
+  <li class="nav-item" role="presentation">
+    <span class="nav-link tab-underlined" id="rejected-tab" data-bs-toggle="tab" data-bs-target="#rejected-tab-pane" role="tab" aria-controls="rejected-tab-pane" aria-selected="false">Rejected Bookings</span>
+  </li>
+  <li class="nav-item" role="presentation">
+    <span class="nav-link tab-underlined" id="tours-tab" data-bs-toggle="tab" data-bs-target="#tours-tab-pane" role="tab" aria-controls="tours-tab-pane" aria-selected="false">Tours</span>
+  </li>
+  <li class="nav-item" role="presentation">
+    <span class="nav-link tab-underlined" id="new-tour-tab" data-bs-toggle="tab" data-bs-target="#new-tour-tab-pane" role="tab" aria-controls="new-tour-tab-pane" aria-selected="false">New Tour</span>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade py-3 show active" id="pending-bookings-tab-pane" role="tabpanel" aria-labelledby="pending-bookings-tab" tabindex="0">
+    <div class="d-flex w-100 justify-content-center">
+      <h3>Your Pending Bookings</h3>
+      <div style="width:800px">
+        <%= render 'shared/bookings-status', bookings: @pending %>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane fade py-3" id="accepted-tab-pane" role="tabpanel" aria-labelledby="accepted-tab" tabindex="0">
+    <div style="width:800px">
+      <%= render 'shared/bookings-status', bookings: @accepted %>
+    </div>
+  </div>
+  <div class="tab-pane fade py-3" id="rejected-tab-pane" role="tabpanel" aria-labelledby="rejected-tab" tabindex="0">
+    <div style="width:800px">
+      <%= render 'shared/bookings-status', bookings: @rejected %>
+    </div>
+  </div>
+  <div class="tab-pane fade py-3" id="tours-tab-pane" role="tabpanel" aria-labelledby="tours-tab" tabindex="0">
+  </div>
+  <div class="tab-pane fade py-3" id="new-tour-tab-pane" role="tabpanel" aria-labelledby="new-tours-tab" tabindex="0">
+    <div style="width:700px">
+      <%= render 'shared/form-tour', tour: @tour %>
+    </div>
+  </div>
+</div>
+<div class="d-flex w-100 justify-content-center">
+</div>
