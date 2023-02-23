@@ -1,4 +1,4 @@
-<% tour.bookings.each do |booking|%>
+<% current_user.bookings.each do |booking|%>
   <div class="card-product">
     <%= cl_image_tag booking.user.photo.key, class:'rounded-circle'%>
     <div class="card-product-infos black-shadow">
@@ -10,7 +10,13 @@
         <div class="card-product-margin">
           <i class="fa-regular fa-clock card-product-logo-margin"></i><%= "#{booking.start_date.day}/#{booking.start_date.month}/#{booking.start_date.year} at #{booking.start_date.strftime('%H')}:#{booking.start_date.strftime('%M')} " %>
         </div>
-        <div class="card-product-margin"><%= booking.tour.price * booking.guests  %>
+        <div class="card-product-margin">
+          <i class="fa-solid fa-person"></i>
+          <%= booking.guests %>
+        </div>
+        <div class="card-product-margin">
+          <i class="fa-regular fa-dollar-sign "></i>
+          <%= booking.tour.price * booking.guests  %>
         </div>
       </div>
     </div>

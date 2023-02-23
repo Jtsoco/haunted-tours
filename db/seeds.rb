@@ -26,10 +26,11 @@ end
 def fake_user
   user = User.new
   name = Faker::Name.unique.name
-  name = name.split()[0]
-  user.email = "#{name}@faker.net"
-  user.first_name = name
-  user.last_name = name
+  first_name = name.split()[0]
+  last_name = name.split()[1]
+  user.email = "#{first_name}@faker.net"
+  user.first_name = first_name
+  user.last_name = last_name
   user.password = 'password'
   user.photo.attach(io: dwayne, filename:"Dwayne.jpg", content_type: "image/jpg" )
   puts user
