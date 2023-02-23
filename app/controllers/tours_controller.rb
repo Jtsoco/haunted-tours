@@ -27,7 +27,7 @@ class ToursController < ApplicationController
   end
 
   def hosted_tours
-    @tours = current_user.tours 
+    @tours = current_user.tours
     @bookings = policy_scope([:host, Booking])
   end
 
