@@ -16,12 +16,8 @@ class ToursController < ApplicationController
   end
 
   def hosted_tours
-    @tours = Tour.all
-    if current_user ==
-      
-    end
-    @tour =
-    authorize @tour
+    @tours = Tour.where(id: params[:user_id])
+    # authorize @tour
   end
 
   private

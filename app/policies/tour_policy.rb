@@ -9,7 +9,7 @@ class TourPolicy < ApplicationPolicy
   def show?
     true
   end
-
+  
   # private
 
   # def user_is_host?
