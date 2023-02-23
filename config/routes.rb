@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   get '/hosted_tours', to: 'tours#hosted_tours', as: :hosted_tours
   resources :bookings, only: [:index, :update]
-
+  resources :users, only: [:show]
 
   # Defines the root path route ("/")
   # root "articles#index"
