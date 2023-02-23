@@ -1,12 +1,12 @@
 <ul class="nav tabs-underlined" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-    <span class="nav-link tab-underlined <%=  'active' unless @tab == 'new-tab'%>" id="tours-tab" data-bs-toggle="tab" data-bs-target="#tours-tab-pane" role="tab" aria-controls="tours-tab-pane" aria-selected="false">Tours</span>
+    <span class="nav-link tab-underlined <%=  'active' unless @tab || params[:tab]=='booking'%>" id="tours-tab" data-bs-toggle="tab" data-bs-target="#tours-tab-pane" role="tab" aria-controls="tours-tab-pane" aria-selected="false">Tours</span>
   </li>
   <li class="nav-item" role="presentation">
     <span class="nav-link tab-underlined <%=  'active' if @tab == 'new-tab'%>" id="new-tour-tab" data-bs-toggle="tab" data-bs-target="#new-tour-tab-pane" role="tab" aria-controls="new-tour-tab-pane" aria-selected="false">New Tour</span>
   </li>
   <li class="nav-item" role="presentation">
-    <span class="nav-link tab-underlined id="pending-bookings-tab" data-bs-toggle="tab" data-bs-target="#pending-bookings-tab-pane" role="tab" aria-controls="pending-bookings-tab-pane" aria-selected="true">Pending Bookings</span>
+    <span class="nav-link tab-underlined <%= 'active' if params[:tab] == 'booking' %>" id="pending-bookings-tab" data-bs-toggle="tab" data-bs-target="#pending-bookings-tab-pane" role="tab" aria-controls="pending-bookings-tab-pane" aria-selected="true">Pending Bookings</span>
   </li>
   <li class="nav-item" role="presentation">
     <span class="nav-link tab-underlined" id="accepted-tab" data-bs-toggle="tab" data-bs-target="#accepted-tab-pane" role="tab" aria-controls="accepted-tab-pane" aria-selected="false">Accepted Bookings</span>
@@ -16,7 +16,7 @@
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade py-3 <%=  'show active' unless @tab%>" id="tours-tab-pane" role="tabpanel" aria-labelledby="tours-tab" tabindex="0">
+  <div class="tab-pane fade py-3 <%=  'show active' unless @tab || params[:tab]=='booking'%>" id="tours-tab-pane" role="tabpanel" aria-labelledby="tours-tab" tabindex="0">
     <%= render 'shared/my_tours', tour: @tours %>
   </div>
   <div class="tab-pane fade py-3 <%=  'show active' if @tab == 'new-tab'%>" id="new-tour-tab-pane" role="tabpanel" aria-labelledby="new-tours-tab" tabindex="0">
@@ -26,27 +26,40 @@
       </div>
     </div>
   </div>
-  <div class="tab-pane fade py-3 " id="pending-bookings-tab-pane" role="tabpanel" aria-labelledby="pending-bookings-tab" tabindex="0">
+  <div class="tab-pane fade py-3 <%= 'show active' if params[:tab] == 'booking' %>" id="pending-bookings-tab-pane" role="tabpanel" aria-labelledby="pending-bookings-tab" tabindex="0">
     <div class="d-flex w-100 flex-column align-items-center">
-      <h3>Your Pending Bookings</h3>
-      <div style="width:800px">
-        <%= render 'shared/bookings-status', bookings: @pending %>
-      </div>
+      <% if @bookings.pending.exists? %>
+        <h3>Your Pending Bookings</h3>
+        <div style="width:900px">
+          <%= render 'shared/bookings-status', bookings: @bookings.pending %>
+        </div>
+      <% else %>
+        <h3>No Pending Bookings</h3>
+      <% end %>
     </div>
   </div>
   <div class="tab-pane fade py-3" id="accepted-tab-pane" role="tabpanel" aria-labelledby="accepted-tab" tabindex="0">
     <div class="d-flex w-100 flex-column align-items-center">
-      <h3>Your Accepted Bookings</h3>
-      <div style="width:800px">
-        <%= render 'shared/bookings-status', bookings: @accepted %>
-      </div>
+      <% if @bookings.accepted.exists? %>
+        <h3>Your Accepted Bookings</h3>
+        <div style="width:900px">
+          <%= render 'shared/bookings-status', bookings: @bookings.accepted %>
+        </div>
+      <% else %>
+        <h3>No Accepted Bookings</h3>
+      <% end %>
     </div>
   </div>
   <div class="tab-pane fade py-3" id="rejected-tab-pane" role="tabpanel" aria-labelledby="rejected-tab" tabindex="0">
     <div class="d-flex w-100 flex-column align-items-center">
-      <div style="width:900px">
-        <%= render 'shared/bookings-status', bookings: @rejected %>
-      </div>
+      <% if @bookings.rejected.exists? %>
+        <h3>Your Rejected Bookings</h3>
+        <div style="width:900px" class="d-flex justify-content-center">
+          <%= render 'shared/bookings-status', bookings: @bookings.rejected %>
+        </div>
+      <% else %>
+        <h3>No Rejected Bookings</h3>
+      <% end %>
     </div>
   </div>
 </div>
