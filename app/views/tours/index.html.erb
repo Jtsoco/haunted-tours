@@ -2,7 +2,7 @@
   <h2 class="index-header">Our most popular tours</h2>
   <div class="cards">
     <% @tours.each do |tour| %>
-      <div class="card">
+      <div class="card"id="bg-image"style="background-image: url('https://images.pexels.com/photos/8892/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');height: 60vh">
         <p id="tombstone-head"><strong><%= tour.name %></strong></p>
         <div id="carouselExampleIndicators<%= tour.id %>" class="carousel slide h-50">
           <div class="carousel-indicators">
