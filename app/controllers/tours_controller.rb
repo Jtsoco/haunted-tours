@@ -25,7 +25,7 @@ class ToursController < ApplicationController
       render 'hosted_tours', status: :unprocessable_entity
     end
   end
-
+  
   def hosted_tours
     @tour = Tour.new
     @tours = current_user.tours
