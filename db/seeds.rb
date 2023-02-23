@@ -85,6 +85,7 @@ def booking(user, tour)
   book.end_date = DateTime.new(2023,book.start_date.month,book.start_date.day, book.start_date.hour + 2)
   book.user = user
   book.tour = tour
+  book.guests = rand(1..10)
   book.save
 end
 
