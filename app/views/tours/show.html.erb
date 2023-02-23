@@ -26,17 +26,17 @@
           <p><%= @tour.description %></p>
         </div>
       </div>
-      <div class='show-tour-content p-3'>
-        <h3 class="white-shadow">$<%= @tour.price %></h3>
-        <div class="dropdown">
-          <%# <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <div class='show-tour-content p-3' data-controller="booking">
+        <h3 class="white-shadow" >$<span data-booking-target="price" data-value= <%=@tour.price%>><%= @tour.price %></span></h3>
+          <div class="dropdown">
+            <%# <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Victims number:
           </button> %>
-          <div>
-            <%= render 'bookings/form', tour: @tour, booking: Booking.new %>
+            <div>
+              <%= render 'bookings/form', tour: @tour, booking: Booking.new %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
