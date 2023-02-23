@@ -28,7 +28,8 @@ class BookingsController < ApplicationController
     @booking.status = params[:booking][:status]
 
     if @booking.update(booking_params)
-      redirect_to :hosted_tours, status: :see_other
+      redirect_to hosted_tours_path(tab: 'booking'), status: :see_other
+      # possibly make anew route to allow tab redirects?
     else
       render :hosted_tours, status: :unprocessable_entity
     end
