@@ -24,6 +24,15 @@ class ToursController < ApplicationController
     end
   end
 
+  def hosted_tours
+    @tours = Tour.all
+    if current_user ==
+      
+    end
+    @tour =
+    authorize @tour
+  end
+
   private
 
   def tour_params

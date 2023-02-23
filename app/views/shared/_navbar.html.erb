@@ -17,11 +17,13 @@
             <%= link_to "Tours", tours_path, class: "nav-link" %>
           </li>
           <li class="nav-item active min-max-content">
-            <%= link_to "My Bookings", booked_tours_path, class: "nav-link" %>
+            <%= link_to "My Bookings", bookings_path, class: "nav-link" %>
           </li>
-          <li class="nav-item active min-max-content">
-            <%= link_to "My Hosted Tours", hosted_tours_path, class: "nav-link" %>
-          </li>
+          <% if current_user.bookings_as_owner.any? %>
+            <li class="nav-item active min-max-content">
+              <%= link_to "My Hosted Tours", hosted_tours_path, class: "nav-link" %>
+            </li>
+          <% end %>
           <li class="nav-item dropdown">
             <%= image_tag "https://www.svgrepo.com/show/407756/zombie.svg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
