@@ -18,10 +18,20 @@ class ToursController < ApplicationController
   def create
     @tour = Tour.new(tour_params)
     @tour.user = current_user
+    @tours = current_user.tours
+    # All this extra stuff, bookings to rejection
+    # it's there to make sure it loads on
+    # the hosted_tours page
+    # if it fails to save
+    @bookings = policy_scope([:host, Booking])
+    @pending = @bookings.where(status: 'pending')
+    @accepted = @bookings.where(status: 'accepted')
+    @rejected = @bookings.where(status: 'rejected')
     authorize @tour
     if @tour.save
-      redirect_to hosted_tours
+      redirect_to :hosted_tours
     else
+      @tab = 'new-tab'
       render 'hosted_tours', status: :unprocessable_entity
     end
   end
@@ -38,6 +48,8 @@ class ToursController < ApplicationController
   private
 
   def tour_params
-    params.require(:tour).permit(:name, :price, :description, :location, :photos)
+    # in permitted params, :photos must be photos: []
+    # If not file upload doesn't work!
+    params.require(:tour).permit(:name, :price, :description, :location, photos: [])
   end
 end
