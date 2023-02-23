@@ -40,3 +40,6 @@
     </div>
   </div>
 </div>
+<% if user = @tour.user %>
+  <%= render 'shared/bookings-status', tour: @tour %>
+<% end %>
