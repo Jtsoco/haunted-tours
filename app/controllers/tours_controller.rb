@@ -27,9 +27,12 @@ class ToursController < ApplicationController
   end
 
   def hosted_tours
-
+    @tour = Tour.new
     @tours = current_user.tours
     @bookings = policy_scope([:host, Booking])
+    @pending = @bookings.where(status: 'pending')
+    @accepted = @bookings.where(status: 'accepted')
+    @rejected = @bookings.where(status: 'rejected')
   end
 
   private
