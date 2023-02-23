@@ -1,3 +1,29 @@
+.left-side {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-card {
+  width: 35%;
+  padding-top: 32px;
+  border: white;
+}
+
 .profile-avatar {
+  height: 170px;
+  width: 170px;
+  object-fit: cover;
   border-radius: 50%;
+}
+
+.profile-card-top h3 {
+  padding: 16px;
+}
+
+.profile-content {
+  width: 50%;
+  padding-top: 32px;
+  padding-right: 24px;
 }
