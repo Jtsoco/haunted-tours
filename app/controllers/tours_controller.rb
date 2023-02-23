@@ -5,6 +5,7 @@ class ToursController < ApplicationController
   end
 
   def new
+    @tour = Tour.new
   end
 
   def show
@@ -13,6 +14,14 @@ class ToursController < ApplicationController
   end
 
   def create
+    @tour = Tour.new(tour_params)
+    @tour.user = current_user
+    authorize @tour
+    if @tour.save
+      redirect_to hosted_tours
+    else
+      render 'hosted_tours', status: :unprocessable_entity
+    end
   end
 
   private
