@@ -1,6 +1,6 @@
 <%= simple_form_for([tour, booking]) do |f| %>
   <%= f.input :start_date, html5: true, input_hmtl: {value: DateTime.now} %>
   <%= f.input :end_date, html5: true, input_hmtl: {value: DateTime.now} %>
-  <%= f.input :guests, input_html: {data: {action:"change->booking#updatePrice"}} %>
+  <%= f.input :guests, input_html: {data: {action:"change->booking#updatePrice"},min: '1', step: 'any'} %>
   <%= f.submit "Book a tour" %>
 <% end %>
