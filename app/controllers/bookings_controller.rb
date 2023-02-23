@@ -24,6 +24,9 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.status = params[:booking][:status]
+
     if @booking.update(booking_params)
       redirect_to :hosted_tours, status: :see_other
     else
