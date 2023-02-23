@@ -1,0 +1,36 @@
+<div class='container-fluid'>
+  <div class='p-5 ms-5 text-light text-center'>
+    <h1><%= @tour.name %></h1>
+  </div>
+  <div class='col-3 ms-3'>
+    <div data-controller="carousel" class="swiper-container">
+      <div class="swiper-wrapper img-fluid">
+        <% @tour.photos.each do |photo| %>
+          <div class="swiper-slide"><% cl_image_path photo.key%><%= cl_image_tag photo.key, width:600, height:450, crop: :fill %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class='col-9'>
+    <div class='tour-content'>
+      <div class='mb-3 w-75 pe-3'>
+        <div class='show-tour-content opacity-50 p-3 w-75'>
+          <h3 class='text-dark shadow'>Tour hosted by: <%=@tour.user.first_name  %></h3>
+          <span class='text-dark shadow'>Location: <%=  @tour.location %></span>
+        </div>
+        <div class='show-tour-content opacity-50 my-5 p-3 h-50 w-75'>
+          <h2 class='text-dark shadow'>Tour description</h2>
+          <p class='text-dark shadow'><%= @tour.description %></p>
+        </div>
+        <div class='show-tour-content opacity-75 my-5 h-50 w-75'>
+          <h3 class='text-dark shadow'>$<%= @tour.price %></h3>
+          <%# <div class="dropdown"> %>
+          <%# <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Victims number:
+          </button> %>
+          <%= render 'bookings/form', tour: @tour, booking: Booking.new %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
