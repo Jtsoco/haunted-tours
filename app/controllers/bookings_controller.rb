@@ -3,7 +3,6 @@ class BookingsController < ApplicationController
     @bookings = policy_scope(Booking)
   end
 
-
   def new
     @booking = Booking.new
     authorize @booking
@@ -20,6 +19,11 @@ class BookingsController < ApplicationController
     else
       render "tours/show", status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @booking = Booking.find(params[:id])
+    authorize(@booking)
   end
 
   def update
