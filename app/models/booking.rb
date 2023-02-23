@@ -5,4 +5,6 @@ class Booking < ApplicationRecord
   def pending?
     status == 'pending'
   end
+  scope :booked, -> { where(booked: true) }
+
 end

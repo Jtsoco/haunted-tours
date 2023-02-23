@@ -1,4 +1,6 @@
 class ToursController < ApplicationController
+  skip_after_action :verify_authorized, only: :hosted_tours
+
   def index
     @tours = Tour.all
     @tours = policy_scope(Tour)
@@ -25,9 +27,9 @@ class ToursController < ApplicationController
   end
 
   def hosted_tours
-    @tour = Tour.new
-    @bookings = current_user.bookings_as_owner
-    authorize @tour
+
+    @tours = current_user.tours
+    @bookings = policy_scope([:host, Booking])
   end
 
   private
