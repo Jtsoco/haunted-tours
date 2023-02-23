@@ -16,9 +16,12 @@
           <li class="nav-item active min-max-content">
             <%= link_to "Tours", tours_path, class: "nav-link" %>
           </li>
+          <% if current_user.bookings_as_host.any? == false %>
           <li class="nav-item active min-max-content">
             <%= link_to "My Bookings", bookings_path, class: "nav-link" %>
           </li>
+          <% end %>
+
           <% if current_user.bookings_as_host.any? %>
             <li class="nav-item active min-max-content">
               <%= link_to "My Hosted Tours", hosted_tours_path, class: "nav-link" %>
