@@ -7,5 +7,8 @@ import Lightbox from 'stimulus-lightbox'
 const application = Application.start()
 application.register('lightbox', Lightbox)
 
+import Carousel from 'stimulus-carousel'
+application.register('carousel', Carousel)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
