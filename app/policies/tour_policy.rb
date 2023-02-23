@@ -10,9 +10,13 @@ class TourPolicy < ApplicationPolicy
     true
   end
 
-  # private
+  def create?
+    true
+  end
 
-  # def user_is_host?
-  #   user == record.user
-  # end
+  private
+
+  def user_is_host?
+    user == record.user
+  end
 end
