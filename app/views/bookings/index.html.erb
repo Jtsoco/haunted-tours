@@ -38,7 +38,11 @@
             <p><%= booking.start_date %></p>
             <p><%= booking.end_date %></p>
             <p>$<%= booking.tour.price %></p>
-            <%= link_to '', tour_path(booking.tour), class: "my-overlay" %>
+            <%= simple_form_for booking do |f| %>
+              <%= f.input :status, as: :hidden, input_html: { value: 'Canceled'} %>
+              <%= f.submit 'Cancel', class: 'btn btn-info' %>
+            <% end %>
+            <%# <%= link_to '', tour_path(booking.tour), class: "my-overlay" %>
           </div>
         </div>
       </div>

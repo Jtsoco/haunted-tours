@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
     @booking.tour = @tour
     authorize @booking
     if @booking.save
-      redirect_to booked_tours_path
+      redirect_to bookings_path
     else
       render "tours/show", status: :unprocessable_entity
     end
@@ -28,10 +28,16 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    if @booking.update(booking_params)
-      redirect_to :hosted_tours, status: :see_other
+    @booking.assign_attributes(booking_params)
+    authorize(@booking)
+    if @booking.save && @booking.status != 'canceled'
+      render '/hosted_tours', status: :see_other
+    elsif !@booking.save && @booking.status != 'canceled'
+      redirect_to hosted_tours
+    elsif @booking.save && @booking.status == 'canceled'
+      render :bookings_tours, status: :see_other
     else
-      render :hosted_tours, status: :unprocessable_entity
+      redirect_to bookings_tours
     end
   end
 
