@@ -1,4 +1,4 @@
-<% current_user.bookings.each do |booking|%>
+<% bookings.each do |booking|%>
   <div class="card-product">
     <%= cl_image_tag booking.user.photo.key, class:'rounded-circle'%>
     <div class="card-product-infos black-shadow">
@@ -17,6 +17,20 @@
         <div class="card-product-margin">
           <i class="fa-regular fa-dollar-sign "></i>
           <%= booking.tour.price * booking.guests  %>
+        </div>
+        <div class="d-flex">
+          <% if booking.pending? %>
+            <%= simple_form_for booking do |f| %>
+              <%= f.input :status, as: :hidden, input_html: {value: 'accepted'} %>
+              <%= f.submit 'Accept', class: 'btn btn-info' %>
+            <% end %>
+            <%= simple_form_for booking do |f| %>
+              <%= f.input :status, as: :hidden, input_html: {value: 'rejected'} %>
+              <%= f.submit 'Reject', class: 'btn btn-light' %>
+            <% end %>
+          <% else %>
+            <div class=""><%= booking.status %></div>
+          <% end %>
         </div>
       </div>
     </div>

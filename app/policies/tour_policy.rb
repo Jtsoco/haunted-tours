@@ -14,6 +14,10 @@ class TourPolicy < ApplicationPolicy
     true
   end
 
+  def hosted_tours?
+    true
+  end
+
   private
 
   def user_is_host?
