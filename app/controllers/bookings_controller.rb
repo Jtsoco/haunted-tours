@@ -3,9 +3,6 @@ class BookingsController < ApplicationController
     @bookings = policy_scope(Booking)
   end
 
-  def hosted_tours
-    policy_scope([:host, Booking])
-  end
 
   def new
     @booking = Booking.new
