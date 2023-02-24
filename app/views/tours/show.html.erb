@@ -4,15 +4,27 @@
     <h5>
     </h5>
   </div>
-  <div class='d-flex justify-content-center mb-3'>
-    <div data-controller="lightbox" data-lightbox-options-value='{"index": 2}'>
-      <% @tour.photos.each do |photo| %>
-        <a href="<%= cl_image_path photo.key%>" class='p-3'>
-          <%= cl_image_tag photo.key, width:400, height:450, crop: :fill %>
+
+  <div class='d-flex'>
+    <div class='d-flex justify-content-center mb-3 w-50'>
+      <div data-controller="lightbox" data-lightbox-options-value='{"index": 2}'>
+        <% @tour.photos.each do |photo| %>
+          <a href="<%= cl_image_path photo.key %>" class='p-3'>
+          <% end %>
+          <%= cl_image_tag @tour.photos.first.key, width:680, height:400, crop: :fill %>
+        </a>
+      </div>
+    </div>
+
+    <div class='grid w-50'>
+      <div class='gx-4'>
+        <% @tour.photos[1..-1].each do |photo| %>
+        <%= cl_image_tag photo.key, width:300, height:200, crop: :fill, class: "grid-photo" %>
         <% end %>
-      </a>
+      </div>
     </div>
   </div>
+
   <div class='tour-content'>
     <div class='container d-flex justify-content-between w-100 p-4'>
       <div class='mb-3 w-75 pe-5'>
