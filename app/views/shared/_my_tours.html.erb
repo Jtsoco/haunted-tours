@@ -1,8 +1,9 @@
-<div class='container-fluid'>
+<div class='container'>
   <h1 class='p-5 d-flex justify-content-center'>Your hosted tours</h1>
   <div class="cards">
     <% @tours.each do |tour| %>
-      <div class="card">
+      <div class="card"id="bg-image"style="background-image: url('https://images.pexels.com/photos/8892/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');height: 60vh">
+        <p id="tombstone-head"><strong><%= tour.name %></strong></p>
         <div id="carouselExampleIndicators<%= tour.id %>" class="carousel slide h-50">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators<%= tour.id %>" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -30,11 +31,8 @@
           </button>
         </div>
         <div class="my-relative">
-          <div class="card-info-top">
-            <p><strong><%= tour.name %></strong></p>
-            <p>⚰️ 5</p>
-          </div>
           <div class="card-info-bottom">
+            <p>⚰️ 5</p>
             <p><%= tour.location %></p>
             <p>$<%= tour.price %></p>
             <%= link_to '', tour_path(tour), class: "my-overlay" %>

@@ -24,9 +24,6 @@ class ToursController < ApplicationController
     # the hosted_tours page
     # if it fails to save
     @bookings = policy_scope([:host, Booking])
-    @pending = @bookings.where(status: 'pending')
-    @accepted = @bookings.where(status: 'accepted')
-    @rejected = @bookings.where(status: 'rejected')
     authorize @tour
     if @tour.save
       redirect_to :hosted_tours
@@ -40,9 +37,6 @@ class ToursController < ApplicationController
     @tour = Tour.new
     @tours = current_user.tours
     @bookings = policy_scope([:host, Booking])
-    @pending = @bookings.where(status: 'pending')
-    @accepted = @bookings.where(status: 'accepted')
-    @rejected = @bookings.where(status: 'rejected')
   end
 
   private

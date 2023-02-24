@@ -1,6 +1,6 @@
 <div class= "container mt-3">
   <h2 class="index-header">My bookings</h2>
-  <div class="cards">
+  <div class="cards"id="bg-image"style="background-image: url('https://images.pexels.com/photos/8892/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');height: 60vh">
     <% @bookings.each do |booking| %>
       <div class="card">
         <p id="tombstone-head"><strong><%= booking.tour.name %></strong></p>

@@ -28,16 +28,17 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    @booking.assign_attributes(booking_params)
+    # @booking.assign_attributes(booking_params)
+    @booking.status = params[:booking][:status]
     authorize(@booking)
-    if @booking.save && @booking.status != 'canceled'
-      render 'hosted_tours', status: :see_other
-    elsif !@booking.save && @booking.status != 'canceled'
-      redirect_to :hosted_tours
-    elsif @booking.save && @booking.status == 'canceled'
-      render bookings_path, status: :see_other
+    if @booking.update(booking_params) && @booking.status != 'canceled'
+      redirect_to hosted_tours_path, status: :see_other
+    elsif !@booking.update(booking_params) && @booking.status != 'canceled'
+      render :hosted_tours
+    elsif @booking.update(booking_params) && @booking.status == 'canceled'
+      redirect_to bookings_path, status: :see_other
     else
-      redirect_to :bookings
+      render :bookings
     end
   end
 

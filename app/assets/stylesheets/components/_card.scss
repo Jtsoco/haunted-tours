@@ -17,8 +17,9 @@
   position: relative;
   width: 280px;
   height: 350px;
-  background-color: #8f9394;
-  color: black;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px #000000;
+  margin: 5px;
   border-top-right-radius: 70px;
   border-top-left-radius: 70px;
   border: black;
@@ -27,7 +28,7 @@
 .favorite-logo {
   position: absolute;
   top: 10px;
-  right: 19px;
+  right: 45px;
   z-index: 1;
 }
 
@@ -40,6 +41,7 @@
   background-size: cover;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
+  position: absolute;
 }
 
 .card h2 {
@@ -61,4 +63,8 @@
   margin: 8px;
   margin-top: 8px;
   margin-left: 10px;
+}
+
+#bg-image {
+  background-size: cover;
 }
