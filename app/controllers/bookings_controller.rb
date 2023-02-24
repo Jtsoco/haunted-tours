@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
     @booking.status = params[:booking][:status]
     authorize(@booking)
     if @booking.update(booking_params) && @booking.status != 'canceled'
-      redirect_to hosted_tours_path, status: :see_other
+      redirect_to hosted_tours_path(tab: 'booking'), status: :see_other
     elsif !@booking.update(booking_params) && @booking.status != 'canceled'
       render :hosted_tours
     elsif @booking.update(booking_params) && @booking.status == 'canceled'
