@@ -30,7 +30,7 @@
     <div class="d-flex w-100 flex-column align-items-center">
       <% if @bookings.pending.exists? %>
         <h3>Your Pending Bookings</h3>
-        <div style="width:900px">
+        <div style="width:1000px">
           <%= render 'shared/bookings-status', bookings: @bookings.pending %>
         </div>
       <% else %>
@@ -42,7 +42,7 @@
     <div class="d-flex w-100 flex-column align-items-center">
       <% if @bookings.accepted.exists? %>
         <h3>Your Accepted Bookings</h3>
-        <div style="width:900px">
+        <div style="width:1000px">
           <%= render 'shared/bookings-status', bookings: @bookings.accepted %>
         </div>
       <% else %>
@@ -54,7 +54,7 @@
     <div class="d-flex w-100 flex-column align-items-center">
       <% if @bookings.rejected.exists? %>
         <h3>Your Rejected Bookings</h3>
-        <div style="width:900px">
+        <div style="width:1000px">
           <%= render 'shared/bookings-status', bookings: @bookings.rejected %>
         </div>
       <% else %>
