@@ -1,13 +1,13 @@
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 64px;
   font-family: 'Special Elite', cursive;
-  font-size: larger;
 
 }
 
 #tombstone-head {
+  font-size: larger;
   position: relative;
   display: inline-block;
   top: 10px;
@@ -15,14 +15,16 @@
 
 .card {
   position: relative;
-  width: 280px;
-  height: 350px;
+  width: 345px;
+  height: 370px;
   color: rgb(255, 255, 255);
-  text-shadow: 1px 1px #000000;
+  text-shadow: 2px 1px #000000;
   margin: 5px;
-  border-top-right-radius: 70px;
-  border-top-left-radius: 70px;
-  border: black;
+  border-top-right-radius: 60px;
+  border-top-left-radius: 60px;
+  border-top: 5px solid #00000066;
+  border-right: 7px solid #00000066;
+  border-left: 7px solid #00000066;
 }
 
 .favorite-logo {
@@ -52,7 +54,7 @@
   display: flex;
   justify-content: space-between;
   padding-inline-end: 10px;
-  padding-inline-start: 20px;
+  padding-inline-start: 8px;
   margin-top: 8px;
 }
 
@@ -63,6 +65,8 @@
   margin: 8px;
   margin-top: 8px;
   margin-left: 10px;
+  text-align: initial;
+  font-size: large;
 }
 
 #bg-image {
