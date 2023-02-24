@@ -12,6 +12,8 @@ class ToursController < ApplicationController
 
   def show
     @tour = Tour.find(params[:id])
+    @review = Review.new
+    @reviews = @tour.reviews
     authorize @tour
   end
 

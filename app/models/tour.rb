@@ -4,4 +4,5 @@ class Tour < ApplicationRecord
   validates :name, :description, :location, :price, presence: true
   validates :price, numericality: { greater_than: 0 }
   has_many_attached :photos
+  has_many :reviews, dependent: :destroy
 end
