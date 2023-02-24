@@ -31,13 +31,13 @@ class BookingsController < ApplicationController
     @booking.assign_attributes(booking_params)
     authorize(@booking)
     if @booking.save && @booking.status != 'canceled'
-      render '/hosted_tours', status: :see_other
+      render 'hosted_tours', status: :see_other
     elsif !@booking.save && @booking.status != 'canceled'
-      redirect_to hosted_tours
+      redirect_to :hosted_tours
     elsif @booking.save && @booking.status == 'canceled'
-      render :bookings_tours, status: :see_other
+      render bookings_path, status: :see_other
     else
-      redirect_to bookings_tours
+      redirect_to :bookings
     end
   end
 

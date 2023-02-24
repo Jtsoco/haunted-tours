@@ -35,12 +35,10 @@
             <p>$<%= booking.tour.price * booking.guests %></p>
             <p>⚰️ 5</p>
           </div>
-          <<<<<<< HEAD
-          <div class="card-info-bottom">
+          <div>
             <i class="fa-regular fa-clock card-product-logo-margin"></i><%= booking.nice_date %>
-            <p>$<%= booking.tour.price %></p>
             <%= simple_form_for booking do |f| %>
-              <%= f.input :status, as: :hidden, input_html: { value: 'Canceled'} %>
+              <%= f.input :status, as: :hidden, input_html: { value: 'canceled'} %>
               <%= f.submit 'Cancel', class: 'btn btn-info' %>
             <% end %>
             <%= link_to '', tour_path(booking.tour), class: "my-overlay" %>
@@ -49,3 +47,4 @@
       <% end %>
     </div>
   </div>
+</div>
