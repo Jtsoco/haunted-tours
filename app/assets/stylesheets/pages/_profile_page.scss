@@ -6,16 +6,25 @@
 }
 
 .profile-card {
-  width: 35%;
+  width: 55%;
+  height: 550px;
+  margin-top: 56px;
   padding-top: 32px;
+  border-radius: 16px;
   border: white;
+  background-color: gray;
 }
 
 .profile-avatar {
-  height: 170px;
-  width: 170px;
+  height: 150px;
+  width: 150px;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.profile-card-top {
+  display: flex;
+  justify-content: center;
 }
 
 .profile-card-top h3 {

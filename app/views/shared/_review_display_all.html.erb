@@ -1,5 +1,7 @@
 <% reviews.order('time DESC').each do |review| %>
-  <h4><%= review.user.first_name %></h4>
-  <p><%= review.time %></p>
-  <p><%= review.comment %></p>
+  <div class='review'>
+    <h4><%= review.user.first_name %></h4>
+    <p><%= review.nice_date %></p>
+    <p><%= review.comment %></p>
+  </div>
 <% end %>
