@@ -15,19 +15,19 @@
 <div class='tour-content'>
   <div class='container d-flex justify-content-between w-100 p-4'>
     <div class='mb-3 w-75 pe-5'>
-      <div class='show-tour-content p-3'>
+      <div class='show-tour-content p-3' id="bg-image-show"style="background-image: url('https://images.pexels.com/photos/8892/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');height: 20vh">
         <h3 class="white-shadow">Tour hosted by: <%=@tour.user.first_name  %>
         </h3>
         <span class="white-shadow">Location: <%=  @tour.location %></span>
       </div>
-      <div class='show-tour-content p-3 mt-4 p-3 mt-5 h-50 d-flex flex-column justify-content-center'>
+      <div class='show-tour-content p-3 mt-4 p-3 mt-5 h-50 d-flex flex-column justify-content-center' id="bg-image-show"style="background-image: url('https://images.pexels.com/photos/8892/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');height: 20vh">
         <h2 class='white-shadow'>Tour description</h2>
         <p><%= @tour.description %></p>
       </div>
     </div>
-    <div class='show-tour-content p-3' data-controller="booking">
+    <div class='show-tour-content p-3' data-controller="booking" id="bg-image-show"style="background-image: url('https://images.pexels.com/photos/8892/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');height: 60vh">
       <h3 class="white-shadow" >$<span data-booking-target="price" data-value= <%=@tour.price%>><%= @tour.price %></span></h3>
-        <div class="dropdown">
+        <div class="dropdown" >
           <%# <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Victims number:
           </button> %>
