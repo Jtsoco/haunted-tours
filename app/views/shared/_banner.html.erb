@@ -3,9 +3,7 @@
     <div style="text-align:start">
       <h1>Have the fright <strong>of your Life</strong> at <strong>Haunted Tours</strong>!</h1>
       <p>Experience the greatest, most horrific tours of Japan.</p>
-      <%= link_to tours_path do %>
-        <div class="btn white-shadow" style="background-color:grey;border-radius:50px">See our Haunted Tours</div>
-      <% end %>
+      <%= button_to "See our Haunted Tours", tours_path, class:"btn btn-danger rounded", method: :get %>
     </div>
   </div>
 </div>
