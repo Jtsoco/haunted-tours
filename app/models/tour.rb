@@ -3,4 +3,5 @@ class Tour < ApplicationRecord
   has_many :bookings, dependent: :destroy
   validates :name, :description, :location, :price, presence: true
   has_many_attached :photos
+  has_many :reviews, dependent: :destroy
 end
