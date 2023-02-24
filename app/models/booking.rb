@@ -2,6 +2,8 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :tour
 
+  validates :guests, numericality: { greater_than: 0 }
+
   def pending?
     status == 'pending'
   end
