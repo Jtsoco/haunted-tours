@@ -17,6 +17,8 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to bookings_path
     else
+      @reviews = @tour.reviews
+      @review = Review.new
       render "tours/show", status: :unprocessable_entity
     end
   end
