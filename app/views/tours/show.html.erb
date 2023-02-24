@@ -18,7 +18,7 @@
 
     <div class='grid w-50'>
       <div class='gx-4'>
-        <% @tour.photos.each do |photo| %>
+        <% @tour.photos[1..-1].each do |photo| %>
         <%= cl_image_tag photo.key, width:300, height:200, crop: :fill, class: "grid-photo" %>
         <% end %>
       </div>
