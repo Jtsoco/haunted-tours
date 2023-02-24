@@ -3,6 +3,6 @@
   <%= f.input :price, label: "Price in Dollars", error: "Tour's must have a price!", input_html:{min: '1', step: 'any'} %>
   <%= f.input :description, label: "Describe your tour", error: "Tours must have a description!" %>
   <%= f.input :location, label: "Location of your tour", error: "Tours must have a location!" %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true}, label: "Upload as many files as you want, select with ctrl for windows, cmd for Mac!", input_html: {class: 'white-shadow'} %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'white-shadow'}, label: "Upload as many files as you want, select with ctrl for windows, cmd for Mac!" %>
   <%= f.button :submit, class: 'btn btn-danger'%>
 <% end %>
