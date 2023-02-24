@@ -37,11 +37,15 @@
           </div>
           <div class="card-info-bottom">
             <p><i class="fa-solid fa-hourglass"></i> <%= booking.status.capitalize %></p>
-            <i class="fa-regular fa-clock card-product-logo-margin"></i> <%= booking.nice_date %>
+            <i class="fa-regular fa-clock card-product-logo-margin"></i><%= booking.nice_date %>
+            <%= simple_form_for booking do |f| %>
+              <%= f.input :status, as: :hidden, input_html: { value: 'canceled'} %>
+              <%= f.submit 'Cancel', class: 'btn btn-info' %>
+            <% end %>
             <%= link_to '', tour_path(booking.tour), class: "my-overlay" %>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

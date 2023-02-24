@@ -3,7 +3,6 @@ class BookingsController < ApplicationController
     @bookings = policy_scope(Booking)
   end
 
-
   def new
     @booking = Booking.new
     authorize @booking
@@ -22,16 +21,24 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    @booking = Booking.find(params[:id])
+    authorize(@booking)
+  end
+
   def update
     @booking = Booking.find(params[:id])
-    authorize @booking
+    # @booking.assign_attributes(booking_params)
     @booking.status = params[:booking][:status]
-
-    if @booking.update(booking_params)
-      redirect_to hosted_tours_path(tab: 'booking'), status: :see_other
-      # possibly make anew route to allow tab redirects?
+    authorize(@booking)
+    if @booking.update(booking_params) && @booking.status != 'canceled'
+      redirect_to hosted_tours_path, status: :see_other
+    elsif !@booking.update(booking_params) && @booking.status != 'canceled'
+      render :hosted_tours
+    elsif @booking.update(booking_params) && @booking.status == 'canceled'
+      redirect_to bookings_path, status: :see_other
     else
-      render :hosted_tours, status: :unprocessable_entity
+      render :bookings
     end
   end
 

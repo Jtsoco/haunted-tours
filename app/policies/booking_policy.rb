@@ -11,6 +11,6 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.tour.user
+    record.user || record.tour.user
   end
 end
