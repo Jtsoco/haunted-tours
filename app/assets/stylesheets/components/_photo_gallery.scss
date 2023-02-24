@@ -1,0 +1,14 @@
+.photo-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 5px 5px;
+  grid-template-areas:
+    "big-one big-one . ."
+    "big-one big-one . .";
+}
+
+.big-one {
+  grid-area: big-one;
+  width: 740px;
+}
