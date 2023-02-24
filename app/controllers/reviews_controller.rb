@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
 
   def create
-
     @review = Review.new(review_params)
     @tour = Tour.find(params[:tour_id])
     @review.user = current_user
@@ -14,7 +13,6 @@ class ReviewsController < ApplicationController
       @reviews = @tour.reviews
       render "tours/show", status: :unprocessable_entity
     end
-
   end
 
   private
