@@ -54,7 +54,7 @@
     <div class="d-flex w-100 flex-column align-items-center">
       <% if @bookings.rejected.exists? %>
         <h3>Your Rejected Bookings</h3>
-        <div style="width:900px" class="">
+        <div style="width:900px">
           <%= render 'shared/bookings-status', bookings: @bookings.rejected %>
         </div>
       <% else %>
