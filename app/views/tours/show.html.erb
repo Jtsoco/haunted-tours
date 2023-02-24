@@ -38,6 +38,13 @@
       </div>
     </div>
   </div>
-</div>
-<%= render 'shared/reviews', tour: @tour, review: @review %>
-<%= render 'shared/review_display_all', reviews: @reviews %>
+  <div class='review d-flex mt-3'>
+    <div class='review-form w-75 d-flex justify-content-center'>
+      <div class='w-75'>
+        <%= render 'shared/reviews', tour: @tour, review: @review %>
+        <div class='pt-4'>
+          <%= render 'shared/review_display_all', reviews: @reviews %>
+        </div>
+      </div>
+    </div>
+  </div>
