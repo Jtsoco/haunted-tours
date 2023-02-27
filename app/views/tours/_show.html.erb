@@ -1,36 +1,56 @@
 <div class='container-fluid'>
-  <div class='p-5 ms-5 text-light text-center'>
+  <div class='p-5 ms-5 text-light'>
     <h1><%= @tour.name %></h1>
+    <h5>
+    </h5>
   </div>
-  <div class='col-3 ms-3'>
-    <div data-controller="carousel" class="swiper-container">
-      <div class="swiper-wrapper img-fluid">
+
+  <div class='d-flex'>
+    <div class='d-flex justify-content-center mb-3 w-50'>
+      <div data-controller="lightbox" data-lightbox-options-value='{"index": 2}'>
         <% @tour.photos.each do |photo| %>
-          <div class="swiper-slide"><% cl_image_path photo.key%><%= cl_image_tag photo.key, width:600, height:450, crop: :fill %></div>
+          <a href="<%= cl_image_path photo.key %>" class='p-3'>
+          <% end %>
+          <%= cl_image_tag @tour.photos.first.key, width:680, height:400, crop: :fill %>
+        </a>
+      </div>
+    </div>
+
+    <div class='grid w-50'>
+      <div class='gx-4'>
+        <% @tour.photos[1..-1].each do |photo| %>
+        <%= cl_image_tag photo.key, width:300, height:200, crop: :fill, class: "grid-photo" %>
         <% end %>
       </div>
     </div>
   </div>
-  <div class='col-9'>
-    <div class='tour-content'>
-      <div class='mb-3 w-75 pe-3'>
-        <div class='show-tour-content opacity-50 p-3 w-75'>
-          <h3 class='text-dark shadow'>Tour hosted by: <%=@tour.user.first_name  %></h3>
-          <span class='text-dark shadow'>Location: <%=  @tour.location %></span>
+
+  <div class='tour-content'>
+    <div class='container d-flex justify-content-between w-100 p-4'>
+      <div class='mb-3 w-75 pe-5'>
+        <div class='show-tour-content p-3'>
+          <h3 class="white-shadow">Tour hosted by: <%=@tour.user.first_name  %>
+          </h3>
+          <span class="white-shadow">Location: <%=  @tour.location %></span>
         </div>
-        <div class='show-tour-content opacity-50 my-5 p-3 h-50 w-75'>
-          <h2 class='text-dark shadow'>Tour description</h2>
-          <p class='text-dark shadow'><%= @tour.description %></p>
+        <div class='show-tour-content p-3 mt-4 p-3 mt-5 h-50 d-flex flex-column justify-content-center'>
+          <h2 class='white-shadow'>Tour description</h2>
+          <p><%= @tour.description %></p>
         </div>
-        <div class='show-tour-content opacity-75 my-5 h-50 w-75'>
-          <h3 class='text-dark shadow'>$<%= @tour.price %></h3>
-          <%# <div class="dropdown"> %>
-          <%# <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      </div>
+      <div class='show-tour-content p-3' data-controller="booking">
+        <h3 class="white-shadow" >$<span data-booking-target="price" data-value= <%=@tour.price%>><%= @tour.price %></span></h3>
+          <div class="dropdown">
+            <%# <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Victims number:
           </button> %>
-          <%= render 'bookings/form', tour: @tour, booking: Booking.new %>
+            <div>
+              <%= render 'bookings/form', tour: @tour, booking: Booking.new %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  <%= render 'shared/reviews', tour: @tour, review: @review %>
+  <%= render 'shared/review_display_all', reviews: @reviews %>
