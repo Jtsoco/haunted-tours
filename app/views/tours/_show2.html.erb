@@ -1,0 +1,41 @@
+<div class='container'>
+  <div class='py-3 px-5 ms-5 text-light text-center'>
+    <h1><%= @tour.name %></h1>
+  </div>
+  <div class='row'>
+    <div class='col-6'>
+      <div class='justify-content-start'>
+        <div class='photo-gallery' data-controller="lightbox">
+          <% @tour.photos.each.with_index do |photo, index| %>
+            <%= link_to url_for(photo), class: "#{"big-one" if index == 0}" do %>
+              <%= cl_image_tag photo.key, class: "w-75", style: "#{"height: 250px" unless index == 0}" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='col-6'>
+    <div class='tour-content'>
+      <div class='mb-3'>
+        <div class='w-75 mb-5'>
+          <h3 class='white-shadow'>Tour hosted by: <%=@tour.user.first_name  %></h3>
+          <span class='white-shadow'>Location: <%=@tour.location %></span>
+        </div>
+        <div class='h-50 mb-5 w-75'>
+          <h2 class='white-shadow'>Tour description</h2>
+          <p class='white-shadow'><%= @tour.description %></p>
+        </div>
+        <div class='show-tour-content opacity-75 my-5 h-25 w-50'>
+          <h3 class='text-dark shadow'>$<%= @tour.price %></h3>
+          <%# <div class="dropdown"> %>
+          <%# <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Victims number:
+          </button> %>
+          <%= render 'bookings/form', tour: @tour, booking: Booking.new %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
