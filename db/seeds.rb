@@ -8,7 +8,7 @@
 
 # dwayne is just the dwayne johnson profile pic
 def dwayne
-  user_url = 'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676952908/development/haunted-tours/dwayne_ub4jwa.jpg'
+  user_url = 'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1679459847/seeds/haunted%20tours/3bdb2575-9a92-42f8-8472-bb78c7bd118a_720x405_y0qjpx.jpg'
   URI.open(user_url)
 end
 
@@ -37,33 +37,14 @@ def fake_user
   user.save
 end
 require 'faker'
-PHOTO_ARRAY = ["https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948043/development/haunted-tours/sewer_bo51xi.avif",
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159836/development/haunted-tours/ajtlzrlsrodmmdssyipf.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159795/development/haunted-tours/images_nfh29w.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159787/development/haunted-tours/jbamqett9vtifkkio0rz.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159777/development/haunted-tours/rmwgehbdmilma5391kjf.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159777/development/haunted-tours/rmwgehbdmilma5391kjf.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159752/development/haunted-tours/swjzbjrft7ghbr6qstye.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159738/development/haunted-tours/images_d7cx8j.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677159726/development/haunted-tours/creep_b9n0gn.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948036/development/haunted-tours/scary_kitchen_gcyshd.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948034/development/haunted-tours/haunted_house_2_iiflhg.webp',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948033/development/haunted-tours/scary_bedroom_ufjadj.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948031/development/haunted-tours/haunted_room_1_c9dtcf.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948027/development/haunted-tours/haunted_room_2_kpp9d8.webp',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1676948022/development/haunted-tours/haunted_house_mnq1nv.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677222843/development/haunted-tours/photo-1632360413427-17b7f761850c_l6kxoj.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677222836/development/haunted-tours/photo-1613469425754-bf71d7280f65_acf0wy.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677222830/development/haunted-tours/photo-1548368295-b7158d905383_afbfu0.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677222808/development/haunted-tours/photo-1556534397-927835f4e7bd_fbudab.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677222800/development/haunted-tours/photo-1520996729250-7d888a835cc4_bsh1kp.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677222783/development/haunted-tours/photo-1604005950576-8745a5c40581_inhk36.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677222777/development/haunted-tours/photo-1604013527955-f310df076541_cabdzm.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677222771/development/haunted-tours/photo-1583638666708-5ba77a6f8bd1_tabzvq.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677222745/development/haunted-tours/photo-1597739239353-50270a473397_xv5jqo.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677222703/development/haunted-tours/photo-1530424257364-cd52a3e9bd40_bg3w6j.jpg',
-  'https://res.cloudinary.com/dfjkxrkvj/image/upload/v1677222682/development/haunted-tours/photo-1602260262371-d5f734e1cffc_fzfbrz.jpg',
-
+PHOTO_ARRAY = [ "https://res.cloudinary.com/dfjkxrkvj/image/upload/v1679459843/seeds/haunted%20tours/EUtkgapXYAc3Wpk_thkg8c.jpg",
+  "https://res.cloudinary.com/dfjkxrkvj/image/upload/v1679459841/seeds/haunted%20tours/haunted_travel_destinations_spooky_vacations_400_1_pshjp3.jpg",
+  "https://res.cloudinary.com/dfjkxrkvj/image/upload/v1679459835/seeds/haunted%20tours/download_dq3tas.jpg",
+  "https://res.cloudinary.com/dfjkxrkvj/image/upload/v1679459233/seeds/haunted%20tours/haunted_house_2_v06kfq.webp",
+  "https://res.cloudinary.com/dfjkxrkvj/image/upload/v1679459834/seeds/haunted%20tours/haunted-house-g5d638e7bd_1920_1667132286906_1667132303445_1667132303445_jacftj.webp",
+  "https://res.cloudinary.com/dfjkxrkvj/image/upload/v1679459231/seeds/haunted%20tours/scary_kitchen_rg4bkv.jpg",
+  "https://res.cloudinary.com/dfjkxrkvj/image/upload/v1679459230/seeds/haunted%20tours/scary_bedroom_d65sfp.jpg",
+  "https://res.cloudinary.com/dfjkxrkvj/image/upload/v1679459229/seeds/haunted%20tours/haunted_room_1_gv9hat.jpg"
 
 ]
 User.destroy_all
