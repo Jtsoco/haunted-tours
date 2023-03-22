@@ -6,3 +6,12 @@
   color: black;
   text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.2);
 }
+
+.my-link-decorations {
+  text-decoration: none;
+  color: white;
+}
+
+.my-link-decorations:hover {
+  color: rgb(164, 164, 164);
+}

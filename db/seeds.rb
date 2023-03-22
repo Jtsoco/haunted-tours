@@ -81,15 +81,16 @@ def make_tours(index)
     tour_prefix = Faker::Address.city_suffix.capitalize
     tour_full_name = "#{tour_prefix} #{tour_name}"
     monster_name = MONSTERS.sample
-    tour.name = "The #{monster_name} of #{tour_full_name} "
+    tour.name = "#{monster_name.capitalize} of #{tour_full_name} "
     puts tour.name
     tour.price = 666
     tour.user = User.all[index]
     tour.description = description_template(name: tour_full_name, monster: monster_name, num1: numb1,
        num2: numb2, price: tour.price, user_name: tour.user.first_name.capitalize)
     tour.location = location
-    4.times do
-      url = PHOTO_ARRAY.sample
+    urls = PHOTO_ARRAY.shuffle
+    5.times do
+      url = urls.pop
       type = url.split('.').last
       file = URI.open(url)
       tour.photos.attach(io: file, filename:"#{Faker::Books::Lovecraft.deity}.#{type}", content_type: "image/#{type}" )
