@@ -12,3 +12,45 @@
   grid-area: big-one;
   width: 740px;
 }
+
+.photo-gallery-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 5px 5px;
+  grid-template-areas:
+    "big-one-2 big-one-2 . "
+    "big-one-2 big-one-2 . "
+    "small-one-1 . small-one-2 "
+    "small-one-3 . small-one-4 ";
+}
+
+.big-one-2 {
+  grid-area: big-one-2;
+  width: 450px;
+  height: 350px;
+}
+
+.small-one-1 {
+grid-area: small-one-1;
+height: 180px;
+width: 160px;
+}
+
+.small-one-2 {
+  grid-area: small-one-2;
+  height: 180px;
+  width: 160px;
+  }
+
+.small-one-3 {
+  grid-area: small-one-3;
+  height: 180px;
+  width: 160px;
+  }
+
+.small-one-4 {
+  grid-area: small-one-4;
+  height: 180px;
+  width: 160px;
+  }
